@@ -62,7 +62,7 @@ var checkHtmlFile = function(htmlfile, checksfile) {
 var clone = function(fn) {
     //Workaround for commander.js issue. 
     //http://stackoverflow.com/a/6772648
-    retun fn.bind({ });
+    return fn.bind({ });
 };
 
 if(require.main == module) {
