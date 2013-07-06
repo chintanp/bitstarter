@@ -29,6 +29,7 @@ var program = require('commander');
 var cheerio = require('cheerio');
 var HTMLFILE_DEFAULT = "index.html";
 var CHECKSFILE_DEFAULT = "checks.json";
+var URL_DEFAULT = "https://github.com/chintanp/bitstarter/blob/443d38878d1ab1f4734e0fd2416668d6e8055fb9/index.html"
 
 var assertFileExists = function(infile) {
     var instr = infile.toString();
@@ -69,6 +70,7 @@ if(require.main == module) {
     program
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
+        .option('-u, --url <url>', 'URL of the HTML file', clone(assertFileExists), URL_DEFAULT)
         .parse(process.argv);
 
     var checkJson = checkHtmlFile(program.file, program.checks);
