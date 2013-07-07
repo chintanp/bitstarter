@@ -70,10 +70,18 @@ if(require.main == module) {
     program
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
-        .option('-u, --url <url>', 'URL of the HTML file', clone(assertFileExists), URL_DEFAULT)
+        .option('-u, --url <url>', 'URL of the HTML file', clone(assertFileExists), URL_DEFAULT) //Option to accept URL on the command line
         .parse(process.argv);
+    //Check to see whether the user chose file or URL
+    if(program.file) {
+	//This is how HTML file in directory is checked
+	var checkJson = checkHtmlFile(program.file, program.checks);
+    }
+    else if(program.url) {
+	//Logic to get the HTML file from the URL and send the file for checking.  
+	var checkJson = checkh
 
-    var checkJson = checkHtmlFile(program.file, program.checks);
+    }	
     var outJson = JSON.stringify(checkJson, null, 4);
     console.log(outJson);
 }
