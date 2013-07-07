@@ -77,11 +77,11 @@ if(require.main == module) {
 	//This is how HTML file in directory is checked
 	var checkJson = checkHtmlFile(program.file, program.checks);
     }
-    else if(program.url) {
-	//Logic to get the HTML file from the URL and send the file for checking.  
-	var checkJson = checkh
+//    else if(program.url) {
+//	//Logic to get the HTML file from the URL and send the file for checking.  
+//	var checkJson = checkh
 
-    }	
+//    }	
     var outJson = JSON.stringify(checkJson, null, 4);
     console.log(outJson);
 }
