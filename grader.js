@@ -23,7 +23,9 @@ References:
 
 */
 
-
+var request = require('request'); //Added for retrieving HTML
+var fs1 = require('fs');
+var rest = require('restler');
 var fs = require('fs');
 var program = require('commander');
 var cheerio = require('cheerio');
@@ -50,6 +52,7 @@ var loadChecks = function(checksfile) {
 };
 
 var checkHtmlFile = function(htmlfile, checksfile) {
+    //console.log("Inside checkHtmlFile");
     $ = cheerioHtmlFile(htmlfile);
     var checks = loadChecks(checksfile).sort();
     var out = { };
@@ -77,14 +80,24 @@ if(require.main == module) {
 	//This is how HTML file in directory is checked
 	console.log(program.file);
 	var checkJson = checkHtmlFile(program.file, program.checks);
+	var outJson = JSON.stringify(checkJson, null, 4);
+	console.log(outJson);
     }
     else if(program.url) {
-//	//Logic to get the HTML file from the URL and send the file for checking.  
-//	var checkJson = checkh
-	console.log(program.url);
+	//Logic to get the HTML file from the URL and send the file for checking.  
+	//rest is a restler object. The HTML file contents are available in the 'result' variable.
+	rest.get(program.url).on('complete', function(result) {
+	   // console.log(result);
+	    fs1.writeFileSync('downloaded.html', result);
+	    //console.log("Wrote into the file downloaded");
+            var checkJson = checkHtmlFile('downloaded.html', program.checks);
+	    var outJson = JSON.stringify(checkJson, null, 4);
+	    console.log(outJson);
+	    fs1.writeFileSync('output.json', outJson);
+	 });   
+				      
+
     }	
-    var outJson = JSON.stringify(checkJson, null, 4);
-    console.log(outJson);
 }
 else {
     exports.checkHtmlFile = checkHtmlFile;
