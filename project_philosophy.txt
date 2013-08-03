@@ -1,0 +1,23 @@
+- In a maximum time of 2 years the functionality of evrywhr.me will be part of all APIs used by AR/VR systems, that are seemingly springing all around us. 
+
+
+- Until then, evrywhr.me should seek to fill in the gap of our connected-ness in a seamless way, i.e. it should work with minimal User interactioN (UN). 
+  
+      -- The more enriched the user's mobility i.e. the multitude of real-time data providing sensors, the more absence of UN can be achieved. 
+      
+      -- The videofeed will always have only button, an X on the corner to cancel out of an evrywhr.me session. 
+      
+      -- This defines the philosophy of evrywhr.me as UN reduces User iMmersion (UM). 
+      
+    
+  Evrywhr.me will either work in your device or it wont, there will never be any configuration required. 
+  
+  In essence, UN -> 0 (UN should tend to zero) to maximize UM. 
+  
+  
+  
+
+
+
+
+
